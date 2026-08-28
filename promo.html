@@ -5,8 +5,10 @@
 <title>Промо-картинка вебинара</title>
 <!--
   Исходник промо-изображения для WhatsApp и соцсетей.
-  Размер холста 1080x1800. Пересобрать картинку:
-  chrome --headless=new --screenshot=promo.png --window-size=1080,1800 promo.html
+  Структура и тексты повторяют прежний постер, оформление - в стиле сайта.
+  Холст 1080x1800. Пересобрать картинку: открыть файл в браузере и снять
+  скриншот окна 1080x1800 либо, при закрытом Chrome, выполнить:
+  chrome --headless --screenshot=promo.png --window-size=1080,1800 promo.html
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,257 +31,192 @@
   body {
     width: 1080px;
     height: 1800px;
-    padding: 68px 64px 60px;
+    padding: 92px 80px 88px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     background:
-      radial-gradient(120% 60% at 100% 0%, rgba(228, 250, 124, .85) 0%, rgba(228, 250, 124, 0) 62%),
+      radial-gradient(110% 55% at 100% 0%, rgba(228, 250, 124, .9) 0%, rgba(228, 250, 124, 0) 60%),
       var(--paper);
     color: var(--ink);
     font-family: "Manrope", "Segoe UI", Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ---------- Шапка ---------- */
-  .top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .brand { display: flex; align-items: center; gap: 16px; }
-  .brand__mark {
-    display: grid;
-    place-items: center;
-    width: 62px;
-    height: 62px;
-    border-radius: 18px;
-    background: var(--ink);
-    color: var(--lime);
-    font-size: 27px;
-    font-weight: 800;
-    letter-spacing: -.02em;
-  }
-  .brand__name {
-    font-size: 21px;
-    font-weight: 700;
-    line-height: 1.12;
-  }
-  .tag {
-    padding: 13px 26px;
-    border: 2px solid var(--ink);
-    border-radius: 999px;
-    font-size: 21px;
-    font-weight: 700;
-  }
-
   /* ---------- Заголовок ---------- */
   .title {
-    margin-top: 64px;
-    font-size: 92px;
+    font-size: 88px;
     font-weight: 800;
-    line-height: .98;
-    letter-spacing: -.035em;
+    line-height: 1.02;
+    letter-spacing: -.025em;
+    text-align: center;
+    text-transform: uppercase;
   }
+  .sub {
+    margin-top: 34px;
+    font-size: 41px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  /* Лаймовый маркер вместо цветного текста: на белом он читается лучше */
   .mark { position: relative; white-space: nowrap; z-index: 0; }
   .mark::after {
     content: "";
     position: absolute;
-    left: -4px;
-    right: -4px;
-    bottom: .13em;
-    height: .30em;
+    left: -6px;
+    right: -6px;
+    bottom: .11em;
+    height: .32em;
     border-radius: 8px;
     background: var(--lime);
     z-index: -1;
   }
-  .sub {
-    margin-top: 40px;
-    max-width: 24ch;
-    font-size: 33px;
-    font-weight: 500;
-    line-height: 1.35;
-    color: var(--ink-soft);
-  }
+  .mark--thin::after { bottom: .02em; height: .44em; }
 
-  /* ---------- Карточка «запрос - сайт» ---------- */
-  .demo {
-    flex: none;
-    margin-top: 54px;
-    border: 1px solid var(--line);
-    border-radius: 34px;
-    background: var(--paper);
-    box-shadow: 0 24px 60px rgba(16, 16, 20, .10);
-    overflow: hidden;
-  }
-  .demo__bar {
+  /* ---------- Стоимость ---------- */
+  .price {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 20px 26px;
-    background: var(--mist);
-    border-bottom: 1px solid var(--line);
+    gap: 26px;
   }
-  .demo__dot { width: 13px; height: 13px; border-radius: 50%; background: #d3d3dc; }
-  .demo__body { padding: 26px; }
-  .demo__prompt {
-    padding: 24px 26px;
-    border-radius: 24px;
+  .price__rule {
+    flex: 1;
+    height: 3px;
+    background: var(--ink);
+    opacity: .18;
+  }
+  .price__badge {
+    padding: 24px 46px;
+    border-radius: 26px;
     background: var(--coal);
-    color: #fff;
+    text-align: center;
   }
-  .demo__label {
+  .price__label {
     display: block;
-    margin-bottom: 10px;
-    font-size: 16px;
+    font-size: 21px;
     font-weight: 700;
     letter-spacing: .14em;
     text-transform: uppercase;
     color: var(--lime);
   }
-  .demo__text { font-size: 25px; line-height: 1.45; }
-  .demo__caret {
-    display: inline-block;
-    width: 12px;
-    height: .95em;
-    margin-left: 4px;
-    background: var(--lime);
-    vertical-align: -3px;
-  }
-  .demo__preview {
-    display: grid;
-    gap: 14px;
-    margin-top: 24px;
-    padding: 26px;
-    border-radius: 24px;
-    background: var(--mist);
-  }
-  .ph { display: block; border-radius: 8px; background: #dcdce4; }
-  .ph--nav { width: 42%; height: 14px; }
-  .ph--hero { height: 62px; background: #c8c8d4; }
-  .ph--line { height: 12px; }
-  .ph--short { width: 62%; }
-  .ph--btn { width: 150px; height: 34px; border-radius: 999px; background: var(--lime-deep); }
-
-  /* ---------- Факты ---------- */
-  .facts {
-    flex: none;
-    margin-top: 50px;
-    border-radius: 30px;
-    background: var(--mist);
-    padding: 8px 34px;
-  }
-  .fact {
-    display: flex;
-    align-items: baseline;
-    gap: 22px;
-    padding: 30px 0;
-    border-bottom: 1px solid #e2e2e9;
-  }
-  .fact:last-child { border-bottom: 0; }
-  .fact__key {
-    flex: 0 0 190px;
-    font-size: 21px;
-    font-weight: 700;
-    letter-spacing: .06em;
+  .price__value {
+    display: block;
+    margin-top: 8px;
+    font-size: 52px;
+    font-weight: 800;
+    letter-spacing: -.02em;
     text-transform: uppercase;
-    color: var(--ink-soft);
-  }
-  .fact__value {
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 1.3;
-  }
-  .fact__value b {
-    padding: 2px 12px;
-    border-radius: 999px;
-    background: var(--lime);
-    font-weight: 800;
-  }
-  .fact__note {
-    display: block;
-    margin-top: 6px;
-    font-size: 21px;
-    font-weight: 500;
-    color: var(--ink-soft);
+    color: var(--paper);
   }
 
-  /* ---------- Призыв ---------- */
-  .cta {
-    margin-top: auto;
-    padding-top: 44px;
-    text-align: center;
+  /* ---------- Блоки ---------- */
+  .block__head {
+    display: flex;
+    align-items: center;
+    gap: 24px;
   }
-  .cta__btn {
-    display: block;
-    padding: 30px 40px;
-    border-radius: 999px;
-    background: var(--violet);
-    color: #fff;
-    font-size: 34px;
+  .block__icon {
+    flex: 0 0 auto;
+    width: 62px;
+    height: 62px;
+  }
+  .block__title {
+    font-size: 43px;
     font-weight: 800;
-    box-shadow: 0 18px 40px rgba(75, 51, 232, .3);
+    line-height: 1.1;
+    letter-spacing: -.01em;
+    text-transform: uppercase;
   }
-  .cta__url {
-    margin-top: 20px;
-    font-size: 23px;
+  .block__text {
+    margin-top: 26px;
+    font-size: 40px;
     font-weight: 600;
-    color: var(--ink-soft);
+    line-height: 1.4;
   }
+  .block__text span { color: var(--ink-soft); }
+
+  /* Нижний блок: текст слева, иллюстрация справа */
+  .split {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .split__art { flex: 0 0 auto; width: 380px; }
 </style>
 </head>
 <body>
 
-  <div class="top">
-    <div class="brand">
-      <span class="brand__mark">15</span>
-      <span class="brand__name">минут<br>на сайт</span>
+  <header>
+    <h1 class="title">Создай свой<br>сайт за <span class="mark">15 минут</span></h1>
+    <p class="sub">Начни легко использовать <span class="mark mark--thin">ИИ</span></p>
+  </header>
+
+  <div class="price">
+    <span class="price__rule"></span>
+    <div class="price__badge">
+      <span class="price__label">Стоимость занятия</span>
+      <span class="price__value">230 песо</span>
     </div>
-    <span class="tag">Онлайн-вебинар</span>
+    <span class="price__rule"></span>
   </div>
 
-  <h1 class="title">Создай свой сайт за <span class="mark">15 минут</span></h1>
-  <p class="sub">Начни легко использовать ИИ. Без кода, шаблонов и подрядчиков.</p>
-
-  <div class="demo">
-    <div class="demo__bar">
-      <span class="demo__dot"></span><span class="demo__dot"></span><span class="demo__dot"></span>
+  <div class="block">
+    <div class="block__head">
+      <!-- Календарь -->
+      <svg class="block__icon" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="10" width="54" height="48" rx="12" fill="#e4fa7c" stroke="#101014" stroke-width="4"/>
+        <path d="M4 26h54" stroke="#101014" stroke-width="4"/>
+        <path d="M19 4v12M43 4v12" stroke="#101014" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="20" cy="38" r="3.6" fill="#101014"/>
+        <circle cx="31" cy="38" r="3.6" fill="#101014"/>
+        <circle cx="42" cy="38" r="3.6" fill="#101014"/>
+        <circle cx="20" cy="49" r="3.6" fill="#101014"/>
+        <circle cx="31" cy="49" r="3.6" fill="#101014"/>
+      </svg>
+      <h2 class="block__title">Выбирай удобное время:</h2>
     </div>
-    <div class="demo__body">
-      <div class="demo__prompt">
-        <span class="demo__label">Ваш запрос</span>
-        <p class="demo__text">Сделай сайт для моей мастерской: обо мне, галерея работ, цены и форма заявки в WhatsApp<span class="demo__caret"></span></p>
+    <p class="block__text">
+      3 сентября: 10:30 / 19:30 и<br>
+      5 сентября 10:30 / 19:30.<br>
+      <span>Время по Канкуну.</span>
+    </p>
+  </div>
+
+  <div class="block block--last">
+    <div class="split">
+      <div>
+        <div class="block__head">
+          <!-- Ноутбук и телефон -->
+          <svg class="block__icon" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="13" width="40" height="28" rx="5" fill="#e4fa7c" stroke="#101014" stroke-width="4"/>
+            <path d="M1 47h44" stroke="#101014" stroke-width="4" stroke-linecap="round"/>
+            <rect x="45" y="24" width="16" height="27" rx="5" fill="#ffffff" stroke="#101014" stroke-width="4"/>
+            <path d="M50 45.5h6" stroke="#101014" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+          <h2 class="block__title">Для обучения<br>нужно:</h2>
+        </div>
+        <p class="block__text">Ноутбук,<br>Аккаунт Google</p>
       </div>
-      <div class="demo__preview">
-        <span class="ph ph--nav"></span>
-        <span class="ph ph--hero"></span>
-        <span class="ph ph--line"></span>
-        <span class="ph ph--line ph--short"></span>
-        <span class="ph ph--btn"></span>
-      </div>
-    </div>
-  </div>
 
-  <div class="facts">
-    <div class="fact">
-      <span class="fact__key">Когда</span>
-      <span class="fact__value">
-        3 и 5 сентября, 10:30 и 19:30
-        <span class="fact__note">Время по Канкуну, длительность около часа</span>
-      </span>
+      <!-- Ноутбук с готовым сайтом: тот же макет, что и на странице -->
+      <svg class="split__art" viewBox="0 0 380 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="34" y="10" width="312" height="216" rx="18" fill="#1b1b21"/>
+        <rect x="50" y="26" width="280" height="184" rx="10" fill="#ffffff"/>
+        <path d="M50 36a10 10 0 0 1 10-10h260a10 10 0 0 1 10 10v20H50z" fill="#f2f2f4"/>
+        <circle cx="66" cy="42" r="4" fill="#d3d3dc"/>
+        <circle cx="80" cy="42" r="4" fill="#d3d3dc"/>
+        <circle cx="94" cy="42" r="4" fill="#d3d3dc"/>
+        <rect x="66" y="72" width="96" height="10" rx="5" fill="#dcdce4"/>
+        <rect x="66" y="94" width="248" height="46" rx="8" fill="#c8c8d4"/>
+        <rect x="66" y="152" width="248" height="9" rx="4.5" fill="#dcdce4"/>
+        <rect x="66" y="169" width="150" height="9" rx="4.5" fill="#dcdce4"/>
+        <rect x="66" y="190" width="104" height="20" rx="10" fill="#cfef4e"/>
+        <path d="M8 240h364l-16 28H24z" fill="#1b1b21"/>
+        <rect x="152" y="246" width="76" height="8" rx="4" fill="#4a4a56"/>
+      </svg>
     </div>
-    <div class="fact">
-      <span class="fact__key">Сколько</span>
-      <span class="fact__value"><b>230 песо</b> (MXN) за занятие</span>
-    </div>
-    <div class="fact">
-      <span class="fact__key">Что нужно</span>
-      <span class="fact__value">Ноутбук и аккаунт Google</span>
-    </div>
-  </div>
-
-  <div class="cta">
-    <span class="cta__btn">Записаться на вебинар</span>
-    <p class="cta__url">vavilov2212.github.io/webinar_create_website</p>
   </div>
 
 </body>
