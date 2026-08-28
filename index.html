@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>Сайт за 15 минут с помощью ИИ - онлайн-вебинар</title>
+<meta name="description" content="Онлайн-вебинар: создаём и публикуем настоящий сайт за 15 минут с помощью нейросети. Без кода и опыта в разработке. Участие - 230 песо (MXN).">
+
+<!-- Ссылку открывают из WhatsApp, поэтому превью ссылки важно -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Создай свой сайт за 15 минут">
+<meta property="og:description" content="Вебинар для тех, кто никогда не программировал. Промпт - сайт - рабочая ссылка. Участие - 230 песо.">
+<meta property="og:locale" content="ru_RU">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body id="top">
+
+<a class="skip-link" href="#form">Перейти к записи</a>
+
+<!-- Промо-полоса: единственный яркий акцент в шапке, ведёт сразу к форме -->
+<a class="promo" href="#form">
+  <span class="promo__text">3 и 5 сентября · онлайн · 230 песо</span>
+  <span class="promo__arrow" aria-hidden="true">&rarr;</span>
+</a>
+
+<header class="header">
+  <div class="wrap header__inner">
+    <a class="brand" href="#top">
+      <span class="brand__mark">15</span>
+      <span class="brand__name">минут<br>на сайт</span>
+    </a>
+    <nav class="nav" aria-label="Разделы страницы">
+      <a class="nav__link" href="#agenda">Программа</a>
+      <a class="nav__link nav__link--cta" href="#form">Запись</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ГЛАВНЫЙ ЭКРАН -->
+  <section class="hero">
+    <div class="wrap hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow">Вебинар для тех, кто не писал код</p>
+        <h1 class="hero__title">Создай свой сайт за&nbsp;<span class="mark">15 минут</span>, начни легко использовать ИИ</h1>
+        <p class="hero__sub">
+          Не нужно знать вёрстку, покупать шаблон или ждать подрядчика. Вы описываете задачу обычными словами,
+          нейросеть собирает страницу, а мы вместе выкладываем её в интернет. К концу встречи у вас будет
+          ссылка на свой сайт, которую можно отправить клиенту.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary btn--lg" href="#form">Записаться на вебинар</a>
+        </div>
+      </div>
+
+      <!-- Фирменный элемент: запрос превращается в сайт прямо на первом экране -->
+      <div class="demo" aria-hidden="true">
+        <div class="demo__bar">
+          <span class="demo__dot"></span><span class="demo__dot"></span><span class="demo__dot"></span>
+        </div>
+        <div class="demo__body">
+          <div class="demo__prompt">
+            <span class="demo__label">Ваш запрос</span>
+            <p class="demo__typing"><span class="demo__typed"></span><span class="demo__caret"></span></p>
+          </div>
+          <div class="demo__preview">
+            <span class="ph ph--nav"></span>
+            <span class="ph ph--hero"></span>
+            <span class="ph ph--line"></span>
+            <span class="ph ph--line ph--short"></span>
+            <span class="ph ph--grid"></span>
+            <span class="ph ph--btn"></span>
+          </div>
+        </div>
+        <div class="demo__status">
+          <span class="demo__pulse"></span>
+          <span class="demo__statusText">Пишем запрос…</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПРОГРАММА -->
+  <section class="section" id="agenda">
+    <div class="wrap">
+      <h2 class="section__title">Программа вебинара</h2>
+
+      <ol class="agenda">
+        <li class="card reveal">
+          <span class="chip">1</span>
+          <h3 class="card__title">Анатомия идеального промпта</h3>
+          <p class="card__text">Из чего состоит запрос к нейросети и как его формулировать, чтобы получить нужный результат с первого раза, а не с десятого.</p>
+        </li>
+        <li class="card reveal">
+          <span class="chip">2</span>
+          <h3 class="card__title">Практика в реальном времени</h3>
+          <p class="card__text">Просим ИИ создать одностраничный сайт по нашим требованиям и сразу видим результат. Вы повторяете за мной в своём окне.</p>
+        </li>
+        <li class="card reveal">
+          <span class="chip">3</span>
+          <h3 class="card__title">Публикация сайта</h3>
+          <p class="card__text">Размещаем результат на бесплатном хостинге и получаем рабочую ссылку, которой можно поделиться в тот же день.</p>
+        </li>
+        <li class="card reveal">
+          <span class="chip">4</span>
+          <h3 class="card__title">Разбор кейсов и ответы на вопросы</h3>
+          <p class="card__text">Смотрим на проекты участников: что делать с текстами, картинками и доменом. Отвечаю на вопросы.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ФОРМА ЗАПИСИ -->
+  <section class="signup" id="form">
+    <div class="wrap signup__inner">
+      <div class="signup__pitch">
+        <h2 class="signup__title">Займите место на вебинаре</h2>
+        <p class="signup__sub">Группа до 5 человек. Выберите удобный поток - ссылку пришлём в WhatsApp.</p>
+      </div>
+
+      <div class="formcard">
+        <form class="form" id="signupForm" action="https://formspree.io/f/xkjnnkjz" method="POST" novalidate>
+          <div class="field">
+            <label class="label" for="name">Имя</label>
+            <input class="input" id="name" name="name" type="text" required autocomplete="given-name" placeholder="Как к вам обращаться">
+          </div>
+
+          <div class="field">
+            <label class="label" for="phone">WhatsApp / телефон</label>
+            <input class="input" id="phone" name="phone" type="tel" required inputmode="tel" autocomplete="tel" placeholder="+52 998 000 00 00">
+            <p class="hint">На этот номер придёт ссылка на вебинар</p>
+          </div>
+
+          <!-- Занятость потоков берётся из slots.js, разметка ниже - запасной вариант -->
+          <div class="field" id="sessionField">
+            <label class="label" for="session">Дата и время</label>
+            <div class="select">
+              <select class="input" id="session" name="session" required>
+                <option value="" disabled selected>Выберите поток</option>
+                <option value="3 сентября, 10:30">3 сентября, 10:30</option>
+                <option value="3 сентября, 19:30">3 сентября, 19:30</option>
+                <option value="5 сентября, 10:30">5 сентября, 10:30</option>
+                <option value="5 сентября, 19:30">5 сентября, 19:30</option>
+              </select>
+              <span class="select__arrow" aria-hidden="true">&#9662;</span>
+            </div>
+            <p class="hint">Время указано по Канкуну (GMT-5)</p>
+          </div>
+
+          <!-- Уходит в заявку вместо списка потоков, когда все они заполнены -->
+          <input type="hidden" id="waitlistSession" name="session" value="Лист ожидания: все потоки заполнены" disabled>
+
+          <p class="notice" id="waitlistNotice" role="status" hidden>
+            К сожалению, все даты заполнены, мы добавим вас в список ожидания, если вдруг кто-то отменится.
+            Либо напишите, какие другие даты вам были бы удобны: мы постараемся запланировать следующие
+            мероприятия на самые популярные даты.
+          </p>
+
+          <div class="field" id="waitlistField" hidden>
+            <label class="label" for="preferred">Комментарий</label>
+            <textarea class="input input--area" id="preferred" name="preferred_dates" rows="3" placeholder="Напишите Ваши пожелания" disabled></textarea>
+          </div>
+
+          <!-- Служебные поля Formspree: тема письма и ловушка для ботов -->
+          <input type="hidden" name="_subject" value="Заявка на вебинар: сайт за 15 минут">
+          <input class="gotcha" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <button class="btn btn--primary btn--block" id="submitBtn" type="submit">Записаться</button>
+          <p class="form__note">Участие - 230 песо (MXN). Нажимая кнопку, вы соглашаетесь получить сообщение со ссылкой на вебинар. Рассылок не будет.</p>
+          <p class="form__error" id="formError" role="alert" hidden></p>
+        </form>
+
+        <div class="success" id="formSuccess" hidden>
+          <span class="success__badge" aria-hidden="true">&#10003;</span>
+          <h3 class="success__title" id="successTitle">Вы записаны</h3>
+          <p class="success__text" id="successText">Ссылку пришлём в WhatsApp за час до начала. До встречи!</p>
+          <button class="btn btn--ghost" id="backBtn" type="button">Заполнить форму ещё раз</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <p class="footer__copy">&copy; <span id="year">2026</span> Сайт за 15 минут</p>
+    <p class="footer__note">Участие - 230 песо (MXN). Время всех потоков - по Канкуну.</p>
+  </div>
+</footer>
+
+<!-- Липкая кнопка на телефоне: главный путь к конверсии -->
+<div class="dock" id="dock" hidden>
+  <a class="btn btn--primary btn--block" href="#form">Записаться на вебинар</a>
+</div>
+
+<!-- Занятость потоков: правится вручную, подключается до основного скрипта -->
+<script src="slots.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
