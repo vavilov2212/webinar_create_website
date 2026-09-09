@@ -544,6 +544,27 @@ button, input, select { font: inherit; color: inherit; }
   resize: vertical;
 }
 
+/* Режим одной даты: красивый блок вместо выпадающего списка */
+.session-single {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 54px;
+  padding: 14px 16px;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--mist);
+}
+.session-single__date {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+.session-single__time {
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
 /* Занятые потоки видно в списке, но выбрать их нельзя */
 .input option:disabled { color: #a0a0ad; }
 

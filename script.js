@@ -140,6 +140,14 @@
   var WAITLIST_LABEL = 'Записаться в лист ожидания';
 
   /* ---------------------------------------------------------
+     Режим проведения вебинара (см. config.js).
+     'streams' - несколько потоков, всё как раньше.
+     'single'  - один вебинар: конкретная дата и время.
+     --------------------------------------------------------- */
+  var config = window.WEBINAR_CONFIG || {};
+  var singleMode = config.mode === 'single';
+
+  /* ---------------------------------------------------------
      Занятость потоков.
      Formspree не умеет считать заявки по вариантам ответа и не отдаёт
      статистику публично, поэтому источник данных - файл slots.js рядом
@@ -245,7 +253,76 @@
     renderSlots();
   }
 
-  loadSlots();
+  /* ---------------------------------------------------------
+     Режим одной конкретной даты.
+     Форма отправляет данные так же, как раньше: select с name="session"
+     остаётся в DOM и хранит значение заявки. Меняется только вид -
+     вместо выпадающего списка показываем красивую дату, а по странице
+     прячем всё, что говорит про несколько потоков.
+     --------------------------------------------------------- */
+  function applySingleMode() {
+    var single = config.single || {};
+    var value = single.value || sessionSelect.value || '';
+
+    // select остаётся источником поля session, но с единственным значением
+    sessionSelect.innerHTML = '';
+    var opt = new Option(value, value, true, true);
+    sessionSelect.add(opt);
+    sessionSelect.name = 'session';
+    sessionSelect.required = false;
+    sessionSelect.value = value;
+
+    // Лист ожидания и второй скрытый session в этом режиме не нужны
+    if (waitlistSession) waitlistSession.disabled = true;
+    waitlistMode = false;
+
+    // Прячем выпадающий список и подсказку про часовой пояс
+    var selectBox = sessionField.querySelector('.select');
+    if (selectBox) selectBox.hidden = true;
+    var hint = sessionField.querySelector('.hint');
+    if (hint) hint.hidden = true;
+
+    // Красивый блок с датой и временем (пересоздаём, чтобы не задваивался)
+    var existing = sessionField.querySelector('.session-single');
+    if (existing) existing.parentNode.removeChild(existing);
+    var pretty = document.createElement('div');
+    pretty.className = 'session-single';
+    var dateEl = document.createElement('span');
+    dateEl.className = 'session-single__date';
+    dateEl.textContent = single.dateText || value;
+    pretty.appendChild(dateEl);
+    if (single.timeText) {
+      var timeEl = document.createElement('span');
+      timeEl.className = 'session-single__time';
+      timeEl.textContent = single.timeText;
+      pretty.appendChild(timeEl);
+    }
+    if (selectBox && selectBox.parentNode) {
+      selectBox.parentNode.insertBefore(pretty, selectBox);
+    } else {
+      sessionField.appendChild(pretty);
+    }
+
+    sessionField.hidden = false;
+    if (waitlistNotice) waitlistNotice.hidden = true;
+    if (waitlistField) waitlistField.hidden = true;
+    if (preferredInput) preferredInput.disabled = true;
+    submitBtn.textContent = SUBMIT_LABEL;
+
+    // Убираем упоминания нескольких потоков по странице
+    var sub = document.querySelector('.signup__sub');
+    if (sub) sub.textContent = 'Группа до 5 человек. Ссылку пришлём в WhatsApp.';
+    var promoText = document.querySelector('.promo__text');
+    if (promoText && single.promoText) promoText.textContent = single.promoText;
+    var footerNote = document.querySelector('.footer__note');
+    if (footerNote) footerNote.textContent = 'Участие - 230 песо (MXN). Время - по Канкуну.';
+  }
+
+  if (singleMode) {
+    applySingleMode();
+  } else {
+    loadSlots();
+  }
 
   // Разрешаем в телефоне только осмысленные символы
   if (phoneInput) {
@@ -320,6 +397,9 @@
         if (isWaitlist) {
           successTitle.textContent = 'Вы в списке ожидания';
           successText.textContent = 'Напишем в WhatsApp, если место освободится или как только назначим новые даты.';
+        } else if (singleMode) {
+          successTitle.textContent = 'Вы записаны';
+          successText.textContent = chosen + ' (по Канкуну). Ссылку пришлём в WhatsApp за час до начала.';
         } else {
           successTitle.textContent = 'Вы записаны';
           successText.textContent = 'Поток: ' + chosen + ' (по Канкуну). Ссылку пришлём в WhatsApp за час до начала.';
@@ -343,7 +423,11 @@
       form.hidden = false;
       form.reset();
       clearErrors();
-      renderSlots();                 // заново рисуем список потоков и состояние кнопки
+      if (singleMode) {
+        applySingleMode();           // заново проставляем дату и вид формы
+      } else {
+        renderSlots();               // заново рисуем список потоков и состояние кнопки
+      }
       setBusy(false);
       form.elements.name.focus({ preventScroll: true });
       form.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
