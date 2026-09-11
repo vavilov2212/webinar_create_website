@@ -10,8 +10,5 @@
    После правки обновите страницу с очисткой кеша: Ctrl+F5 (Cmd+Shift+R).
    ========================================================= */
 window.WEBINAR_SLOTS = [
-  { value: '3 сентября, 10:30', capacity: 5, taken: 0 },
-  { value: '3 сентября, 19:30', capacity: 5, taken: 0 },
-  { value: '5 сентября, 10:30', capacity: 5, taken: 0 },
-  { value: '5 сентября, 19:30', capacity: 5, taken: 0 }
+  { value: '12 сентября, 12:00', capacity: 5, taken: 0 }
 ];
